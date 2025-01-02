@@ -11,6 +11,9 @@ const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  // Use the environment variable for backend URL
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+
   const handleSearch = async (query: string) => {
     console.log("Search initiated with query:", query); // Debug log
 
@@ -18,7 +21,8 @@ const App: React.FC = () => {
     setErrorMessage(null);
 
     try {
-      const { data } = await axios.get("http://localhost:3000/api/search", {
+      // Use the backend URL from the environment variable
+      const { data } = await axios.get(`${backendUrl}/api/search`, {
         params: { query },
       });
 

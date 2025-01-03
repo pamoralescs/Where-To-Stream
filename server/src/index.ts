@@ -1,47 +1,44 @@
-import express from 'express';
-import searchRoutes from './routes/search';
-import cors from 'cors';
+import express from "express";
+import cors from "cors";
+import searchRoutes from "./routes/search";
+import { config } from "./config/env";
+import { errorHandler } from "./middleware/errorHandler";
 
 const app = express();
 
-// Define allowed origins based on environment
-const allowedOrigins = process.env.NODE_ENV === 'production'
-  ? ['https://wheretostream.vercel.app'] // Production frontend URL
-  : ['http://localhost:5173']; // Local frontend URL
+// CORS configuration
+const allowedOrigins =
+  process.env.NODE_ENV === "production"
+    ? ["https://wheretostream.vercel.app"] // Production frontend URL
+    : ["http://localhost:5173"]; // Local frontend URL
 
-// Configure CORS
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (e.g., mobile apps, curl requests)
       if (!origin) return callback(null, true);
-
       if (allowedOrigins.includes(origin)) {
-        callback(null, true); // Allow the origin
+        callback(null, true);
       } else {
-        callback(new Error('Not allowed by CORS')); // Block other origins
+        callback(new Error("Not allowed by CORS"));
       }
     },
-    methods: ['GET', 'POST'], // Allow only these HTTP methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+    methods: ["GET"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// Parse incoming JSON and URL-encoded data
+// Parse JSON requests
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.use('/api', searchRoutes);
+app.use("/api", searchRoutes);
 
 // Error-handling middleware
-app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-  console.error('Error:', err.message || err);
-  res.status(err.status || 500).json({ error: err.message || 'Internal Server Error' });
-});
+app.use(errorHandler);
 
 // Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = config.port;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

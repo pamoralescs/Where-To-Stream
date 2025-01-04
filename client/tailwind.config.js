@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        'safe-bottom': 'env(safe-area-inset-bottom)', // Add support for safe area insets
+      },
+    },
   },
+  variants: {},
   plugins: [],
 }

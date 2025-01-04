@@ -1,6 +1,6 @@
 import React from "react";
 import MovieCard from "./MovieCard";
-import { MovieResult } from "../types";
+import { MovieResult } from "../types/TMDBClientTypes";
 
 interface SearchResultsProps {
   results: MovieResult[];
@@ -26,7 +26,11 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results }) => {
         <MovieCard
           key={movie.id}
           title={movie.title}
-          posterPath={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : undefined}
+          posterPath={
+            movie.poster_path
+              ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+              : undefined
+          }
           releaseDate={movie.release_date}
           streamingProviders={movie.streamingProviders}
         />

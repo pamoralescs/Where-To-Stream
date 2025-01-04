@@ -1,15 +1,17 @@
 # Where-To-Stream
 
-The **Where-To-Stream** app is a web application that allows users to search for movies and find out where they are available for streaming. Built with modern technologies like **React**, **TypeScript**, **Express**, and **Tailwind CSS**, the app demonstrates efficient API integration and user-focused functionality.
+The **Where-To-Stream** app is a web application that allows users to search for movies and find out where they are available for streaming. Built with modern technologies like **React**, **TypeScript**, **Express**, and **Tailwind CSS**, the app demonstrates efficient API integration, responsive design, and a seamless user experience.
 
 ---
 
 ## Key Features
 - **Search for Movies**: Users can search for any movie by title.
 - **Streaming Providers**: Displays a list of streaming platforms where the movie is available.
-- **Detailed Information**: Provides the movie's poster, title, and release date.
-- **Modern UI**: Clean and responsive design using **Tailwind CSS**.
-- **Backend Proxy**: Uses an Express backend to interact with the **TMDB API**, ensuring secure API key handling.
+- **Detailed Information**: Provides the movie's poster, title, release date, and streaming availability.
+- **Responsive Design**: Clean and responsive UI using **Tailwind CSS**.
+- **Backend Proxy**: Utilizes an Express backend to securely interact with the **TMDB API**, ensuring sensitive API keys remain protected.
+- **Error Handling**: Provides clear feedback to users for scenarios like empty search results or server wake-up delays.
+- **Server Wake-Up Indicator**: Notifies users when the backend server is waking up, minimizing confusion during delays.
 
 ---
 
@@ -17,15 +19,15 @@ The **Where-To-Stream** app is a web application that allows users to search for
 - **Frontend**:
   - React with TypeScript
   - Vite for fast development
-  - Tailwind CSS for styling
+  - Tailwind CSS for modern and responsive styling
 - **Backend**:
   - Express.js
-  - TypeScript for server-side code
+  - TypeScript for strongly-typed server-side code
 - **Deployment**:
   - **Frontend**: Deployed on [Vercel](https://vercel.com)
   - **Backend**: Deployed on [Render](https://render.com)
 - **API Integration**:
-  - **TMDB API** for fetching movie and streaming provider data.
+  - **TMDB API** for fetching movie details and streaming provider data.
 
 ---
 
@@ -35,21 +37,21 @@ where-to-stream-app/
 ├── client/                     # Frontend React app
 │   ├── public/                 # Static files
 │   ├── src/                    # Source code
-│   │   ├── components/         # React components
-│   │   ├── hooks/              # Custom hooks
-│   │   ├── services/           # API services
-│   │   ├── types/              # TypeScript interfaces
-│   │   ├── styles/             # CSS/Tailwind files
+│   │   ├── components/         # React components (e.g., MovieCard, SearchBar, Footer)
+│   │   ├── hooks/              # Custom React hooks
+│   │   ├── services/           # API service functions
+│   │   ├── types/              # TypeScript interfaces for TMDB and app data
+│   │   ├── styles/             # Tailwind CSS configuration and global styles
 │   │   ├── App.tsx             # Main app component
-│   │   └── main.tsx            # Entry point
+│   │   └── main.tsx            # Entry point for the app
 ├── server/                     # Backend Express app
 │   ├── src/
-│   │   ├── controllers/        # Route handlers
-│   │   ├── services/           # TMDB API interaction
-│   │   ├── routes/             # API routes
-│   │   ├── middleware/         # Error handling
+│   │   ├── controllers/        # Handlers for API routes
+│   │   ├── services/           # Logic for interacting with the TMDB API
+│   │   ├── routes/             # API route definitions
+│   │   ├── middleware/         # Error handling and other middleware
 │   │   ├── index.ts            # Server entry point
-│   │   └── config.ts           # Configuration and environment
+│   │   └── config.ts           # Configuration and environment setup
 ├── README.md                   # Project documentation
 └── package.json                # Dependencies and scripts
 ```
@@ -60,7 +62,7 @@ where-to-stream-app/
 
 ### Prerequisites
 - Node.js installed
-- TMDB API key (Create an account at [TMDB](https://www.themoviedb.org/) to get your API key)
+- TMDB API key (Create an account at [TMDB](https://www.themoviedb.org/) to generate your API key)
 
 ### Steps
 1. Clone the repository:
@@ -113,8 +115,31 @@ where-to-stream-app/
 
 ---
 
+## Design Decisions
+1. **Server Wake-Up Notification**: If the backend server is asleep (due to hosting constraints on Render), a notification informs users that the server is waking up.
+2. **"Top Results" Notification**: When displaying search results, the app informs users that only the top 10 results are shown, with guidance to refine searches for better specificity.
+3. **Fallback UI**: A clean "No results found" state is displayed for empty search results or invalid queries.
+
+---
+
 ## Screenshots
 ### Home Page
 Displays the search bar and movie results.
 
 ![Home Page](https://your-image-link.com/home-page)
+
+### Search Results
+Responsive design showcasing movie details and streaming platforms.
+
+![Search Results](https://your-image-link.com/search-results)
+
+---
+
+## Credits
+- **TMDB API**: This project uses the [TMDB API](https://www.themoviedb.org/) but is not endorsed or certified by TMDB.
+- **Icons**: React icons used for styling and branding.
+
+---
+
+### **Final Notes**
+The `Where-To-Stream` app is designed to highlight my skills as a developer, showcasing clean design, modern frameworks, and thoughtful UX. Feel free to expand or modify the app to explore additional features!

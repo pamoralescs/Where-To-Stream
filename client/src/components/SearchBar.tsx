@@ -1,19 +1,22 @@
-import React from 'react'
+import React from "react";
 
 interface SearchBarProps {
-  onSearch: (query: string) => void
+  onSearch: (query: string) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-  const [query, setQuery] = React.useState('')
+  const [query, setQuery] = React.useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    onSearch(query)
-  }
+    e.preventDefault();
+    onSearch(query);
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center gap-2 justify-center mb-6">
+    <form
+      onSubmit={handleSubmit}
+      className="flex items-center gap-2 justify-center mb-6"
+    >
       <input
         type="text"
         placeholder="Search for a movie..."
@@ -29,7 +32,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         Search
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

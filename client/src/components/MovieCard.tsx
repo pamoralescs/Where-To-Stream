@@ -1,5 +1,5 @@
 import React from "react";
-import { StreamingProvider } from "../types";
+import { StreamingProvider } from "../types/TMDBClientTypes";
 
 interface MovieCardProps {
   title: string;
@@ -20,7 +20,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
     <div className="bg-white text-gray-800 rounded-lg shadow-md p-4 hover:shadow-xl transition-shadow">
       {posterPath ? (
         <img
-          src={`${baseImageUrl}w342${posterPath}`} // Default resolution
+          src={`${baseImageUrl}w342${posterPath}`}
           srcSet={`
             ${baseImageUrl}w185${posterPath} 185w,
             ${baseImageUrl}w342${posterPath} 342w,

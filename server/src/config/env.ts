@@ -1,6 +1,5 @@
 import * as dotenv from "dotenv";
 
-// Load environment variables from the .env file
 dotenv.config();
 
 export const config = {

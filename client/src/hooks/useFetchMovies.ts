@@ -6,19 +6,22 @@ export const useFetchMovies = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isWakingUp, setIsWakingUp] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
 
   const searchMovies = async (query: string) => {
     const trimmedQuery = query.trim();
     if (!trimmedQuery) {
-      setResults([]); // Clear results for empty input
+      setResults([]);
       setErrorMessage(null);
+      setHasSearched(false);
       return;
     }
 
     setIsLoading(true);
     setErrorMessage(null);
     setIsWakingUp(false);
-    setResults([]); // Clear previous results when starting a new search
+    setResults([]);
+    setHasSearched(true);
 
     const timer = setTimeout(() => setIsWakingUp(true), 3000);
 
@@ -35,5 +38,5 @@ export const useFetchMovies = () => {
     }
   };
 
-  return { results, isLoading, isWakingUp, errorMessage, searchMovies };
+  return { results, isLoading, isWakingUp, errorMessage, searchMovies, hasSearched };
 };

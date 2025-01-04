@@ -5,28 +5,41 @@ import Footer from "../components/Footer";
 import { useFetchMovies } from "../hooks/useFetchMovies";
 
 const HomePage: React.FC = () => {
-  const { results, isLoading, isWakingUp, errorMessage, searchMovies } = useFetchMovies();
-  const [hasSearched, setHasSearched] = useState(false); // Track if a search has been executed
+  const { results, isLoading, isWakingUp, errorMessage, searchMovies } =
+    useFetchMovies();
+  const [hasSearched, setHasSearched] = useState(false);
 
   const handleSearch = async (query: string) => {
-    setHasSearched(true); // Mark that a search has been performed
-    searchMovies(query);  // Execute the search
+    setHasSearched(true);
+    searchMovies(query);
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-900 text-gray-100">
       <header className="text-center py-6">
         <h1 className="text-4xl font-bold">Movie Streaming Availability</h1>
-        <p className="text-gray-400 mt-2">Discover where your favorite movies are streaming!</p>
+        <p className="text-gray-400 mt-2">
+          Discover where your favorite movies are streaming!
+        </p>
       </header>
 
       <main className="flex-grow">
         <SearchBar onSearch={handleSearch} />
 
-        {/* Show the appropriate state */}
+        {hasSearched && results.length > 0 && (
+          <div className="text-center mt-4 mb-4">
+            <p className="text-gray-400 text-sm">
+              Showing top 10 results. Try refining your search for more specific
+              matches.
+            </p>
+          </div>
+        )}
+
         {isWakingUp && (
           <div className="text-center mt-4">
-            <p className="text-yellow-400">The server is waking up. Please wait...</p>
+            <p className="text-yellow-400">
+              The server is waking up. Please wait...
+            </p>
           </div>
         )}
 

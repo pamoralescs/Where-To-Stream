@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
     <footer className="bg-gray-800 text-gray-400 py-6 text-center text-sm pb-[calc(1.5rem+theme(spacing.safe-bottom))]">
       <p className="px-4 text-xs sm:text-sm">
         Created by <span className="text-gray-200 font-semibold">Peter M</span>{" "}
-        2025.
+        2025
       </p>
       <div className="flex gap-6 justify-center mt-6 text-lg">
         <a
@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
         >
           TMDB API
         </a>{" "}
-        but is not endorsed or certified by TMDB.
+        but is not endorsed or certified by TMDB
       </p>
     </footer>
   );

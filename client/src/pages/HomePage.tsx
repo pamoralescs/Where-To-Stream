@@ -28,12 +28,24 @@ const HomePage: React.FC = () => {
 
         {hasSearched && results.length > 0 && (
           <div className="text-center mt-4 mb-4">
-            <p className="text-gray-400 text-sm">
-              Showing top 10 most popular results.
-            </p>
-            <p className="text-gray-400 text-sm">
-              Try refining your search for more specific matches.
-            </p>
+            {results.length === 1 ? (
+              <p className="text-gray-400 text-sm">
+                Showing 1 result. <br />
+                Try refining your search if this isn't the movie you're looking
+                for.
+              </p>
+            ) : results.length < 10 ? (
+              <p className="text-gray-400 text-sm">
+                Showing {results.length} result{results.length > 1 ? "s" : ""}.{" "}
+                <br />
+                Try refining your search for more specific matches.
+              </p>
+            ) : (
+              <p className="text-gray-400 text-sm">
+                Showing top 10 most popular results. <br />
+                Try refining your search for more specific matches.
+              </p>
+            )}
           </div>
         )}
 

@@ -9,4 +9,6 @@ export interface MovieResult {
   poster_path?: string;
   release_date?: string;
   streamingProviders: StreamingProvider[];
+  rating: string;
+  certification: string;
 }

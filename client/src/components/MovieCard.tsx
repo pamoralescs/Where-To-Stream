@@ -6,6 +6,8 @@ interface MovieCardProps {
   posterPath?: string;
   releaseDate?: string;
   streamingProviders: StreamingProvider[];
+  rating: string;
+  certification: string;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({
@@ -13,20 +15,21 @@ const MovieCard: React.FC<MovieCardProps> = ({
   posterPath,
   releaseDate,
   streamingProviders,
+  rating,
+  certification,
 }) => {
   const baseImageUrl = "https://image.tmdb.org/t/p/";
 
   return (
     <div className="bg-white text-gray-800 rounded-lg shadow-md p-4 hover:shadow-xl transition-shadow">
+      <div className="flex justify-between items-center text-sm mb-2">
+        <span className="font-medium mb-1">TMDB Rating: {rating}</span>
+        <span className="font-medium mb-1">{certification}</span>
+      </div>
+
       {posterPath ? (
         <img
           src={`${baseImageUrl}w342${posterPath}`}
-          srcSet={`
-            ${baseImageUrl}w185${posterPath} 185w,
-            ${baseImageUrl}w342${posterPath} 342w,
-            ${baseImageUrl}w500${posterPath} 500w
-          `}
-          sizes="(max-width: 768px) 185px, (max-width: 1200px) 342px, 500px"
           alt={title}
           className="w-full h-auto rounded mb-3"
         />

@@ -28,11 +28,13 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results }) => {
           title={movie.title}
           posterPath={
             movie.poster_path
-              ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+              ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
               : undefined
           }
           releaseDate={movie.release_date}
           streamingProviders={movie.streamingProviders}
+          rating={movie.rating}
+          certification={movie.certification}
         />
       ))}
     </div>

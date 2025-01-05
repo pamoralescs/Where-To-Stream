@@ -29,8 +29,10 @@ const HomePage: React.FC = () => {
         {hasSearched && results.length > 0 && (
           <div className="text-center mt-4 mb-4">
             <p className="text-gray-400 text-sm">
-              Showing top 10 results. Try refining your search for more specific
-              matches.
+              Showing top 10 most popular results.
+            </p>
+            <p className="text-gray-400 text-sm">
+              Try refining your search for more specific matches.
             </p>
           </div>
         )}

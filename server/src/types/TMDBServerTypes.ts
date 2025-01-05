@@ -4,6 +4,8 @@ export interface Movie {
   poster_path?: string;
   release_date?: string;
   popularity: number;
+  vote_average?: number;
+  vote_count?: number;
 }
 
 export interface TMDBSearchResponse {
@@ -21,4 +23,15 @@ export interface WatchProvidersResponse {
       flatrate?: Provider[];
     };
   };
+}
+
+export interface ReleaseDate {
+  iso_3166_1: string;
+  release_dates: {
+    certification: string;
+  }[];
+}
+
+export interface ReleaseDatesResponse {
+  results: ReleaseDate[];
 }

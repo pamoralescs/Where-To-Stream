@@ -1,13 +1,14 @@
-import express from "express";
-import cors from "cors";
-import searchRoutes from "./routes/search";
-import { config } from "./config/env";
+import express from 'express';
+import cors from 'cors';
+import searchRoutes from './routes/search.js';
+import { config } from './config/env.js';
 
 const app = express();
 
 const allowedOrigins = [
-  "https://wheretostream.vercel.app",
-  "http://localhost:5173",
+  'https://wheretostream.vercel.app',
+  'http://localhost:5173',
+  'http://localhost:4173',
 ];
 
 app.use(
@@ -16,34 +17,33 @@ app.use(
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        callback(new Error("Not allowed by CORS"));
+        callback(new Error('Not allowed by CORS'));
       }
     },
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  }),
 );
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api", searchRoutes);
+app.use('/api', searchRoutes);
 
 app.use(
   (
-    err: any,
-    req: express.Request,
+    err: unknown,
+    _req: express.Request,
     res: express.Response,
-    next: express.NextFunction
+    _next: express.NextFunction,
   ) => {
-    console.error("Error:", err.message || err);
+    console.error('Error:', (err as Error).message || err);
     res
-      .status(err.status || 500)
-      .json({ error: err.message || "Internal Server Error" });
-  }
+      .status((err as { status?: number }).status || 500)
+      .json({ error: (err as Error).message || 'Internal Server Error' });
+  },
 );
 
-const PORT = config.port || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.listen(config.port, () => {
+  console.log(`Server running on http://localhost:${config.port}`);
 });

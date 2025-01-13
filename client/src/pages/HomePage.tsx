@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import SearchBar from "../components/SearchBar";
-import SearchResults from "../components/SearchResults";
-import Footer from "../components/Footer";
-import { useFetchMovies } from "../hooks/useFetchMovies";
+import React, { useState } from 'react';
+import SearchBar from '../components/SearchBar';
+import SearchResults from '../components/SearchResults';
+import Footer from '../components/Footer';
+import { useFetchMovies } from '../hooks/useFetchMovies';
 
 const HomePage: React.FC = () => {
   const { results, isLoading, isWakingUp, errorMessage, searchMovies } =
@@ -36,7 +36,7 @@ const HomePage: React.FC = () => {
               </p>
             ) : results.length < 10 ? (
               <p className="text-gray-400 text-sm">
-                Showing {results.length} result{results.length > 1 ? "s" : ""}.{" "}
+                Showing {results.length} result{results.length > 1 ? 's' : ''}.{' '}
                 <br />
                 Try refining your search for more specific matches.
               </p>

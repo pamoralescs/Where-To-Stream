@@ -8,7 +8,7 @@ export interface MovieResult {
   title: string;
   poster_path?: string;
   release_date?: string;
-  streamingProviders: StreamingProvider[];
-  rating: string;
+  streaming_providers: StreamingProvider[];
   certification: string;
+  runtime?: number | string;
 }

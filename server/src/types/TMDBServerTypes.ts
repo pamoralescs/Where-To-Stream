@@ -1,17 +1,3 @@
-export interface Movie {
-  id: number;
-  title: string;
-  poster_path?: string;
-  release_date?: string;
-  popularity: number;
-  vote_average?: number;
-  vote_count?: number;
-}
-
-export interface TMDBSearchResponse {
-  results: Movie[];
-}
-
 export interface Provider {
   provider_name: string;
   logo_path: string;
@@ -34,4 +20,14 @@ export interface ReleaseDate {
 
 export interface ReleaseDatesResponse {
   results: ReleaseDate[];
+}
+
+export interface Movie {
+  id: number;
+  title: string;
+  poster_path?: string;
+  release_date?: string;
+  runtime?: number | string;
+  streaming_providers?: Provider[];
+  certification?: string;
 }

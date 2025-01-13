@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { fetchMovies } from "../services/api";
+import { useState } from 'react';
+import { fetchMovies } from '../services/api';
+import { MovieResult } from '../types/TMDBClientTypes';
 
 export const useFetchMovies = () => {
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<MovieResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isWakingUp, setIsWakingUp] = useState(false);
@@ -28,15 +29,27 @@ export const useFetchMovies = () => {
     try {
       const data = await fetchMovies(trimmedQuery);
       clearTimeout(timer);
-      setResults(data.results);
-    } catch (error) {
+      setResults(
+        data.map((movie) => ({
+          ...movie,
+          runtime: movie.runtime || 'N/A',
+        }))
+      );
+    } catch {
       clearTimeout(timer);
-      setErrorMessage("Something went wrong. Please try again.");
+      setErrorMessage('Something went wrong. Please try again.');
     } finally {
       setIsLoading(false);
       setIsWakingUp(false);
     }
   };
 
-  return { results, isLoading, isWakingUp, errorMessage, searchMovies, hasSearched };
+  return {
+    results,
+    isLoading,
+    isWakingUp,
+    errorMessage,
+    searchMovies,
+    hasSearched,
+  };
 };

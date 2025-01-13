@@ -1,74 +1,80 @@
-# Where-To-Stream
-
-The **Where-To-Stream** app is a web application that allows users to search for movies and find out where they are available for streaming. Built with modern technologies like **React**, **TypeScript**, **Express**, and **Tailwind CSS**, the app demonstrates efficient API integration, responsive design, and a seamless user experience.
+Here is the full README formatted and ready for copy-pasting:
 
 ---
 
-## Key Features
-- **Search for Movies**: Users can search for any movie by title.
-- **Streaming Providers**: Displays a list of streaming platforms where the movie is available.
-- **Detailed Information**: Provides the movie's poster, title, release date, and streaming availability.
-- **Responsive Design**: Clean and responsive UI using **Tailwind CSS**.
-- **Backend Proxy**: Utilizes an Express backend to securely interact with the **TMDB API**, ensuring sensitive API keys remain protected.
-- **Error Handling**: Provides clear feedback to users for scenarios like empty search results or server wake-up delays.
-- **Server Wake-Up Indicator**: Notifies users when the backend server is waking up, minimizing confusion during delays.
+# **Where-To-Stream**
+
+The **Where-To-Stream** app is a full-stack web application that allows users to search for movies and find where they are available for streaming. This project demonstrates modern web development practices, including responsive design, API integration, and robust error handling.
 
 ---
 
-## Tech Stack
+## **Key Features**
+
+- **Movie Search**: Search for movies by title with a clean and intuitive interface.
+- **Streaming Providers**: See a list of streaming platforms offering the movie.
+- **Detailed Movie Info**: Includes the movie's poster, runtime, certification, release date, and more.
+- **Responsive Design**: Seamless experience across desktop and mobile devices, styled with **Tailwind CSS**.
+- **Backend Proxy**: Secures API interactions through an Express backend.
+- **Error Handling**: Provides user-friendly notifications for empty results, server delays, and other issues.
+- **Server Wake-Up Notification**: Informs users when the backend server (hosted on Render) is waking up.
+
+---
+
+## **Tech Stack**
+
 - **Frontend**:
-  - React with TypeScript
-  - Vite for fast development
-  - Tailwind CSS for modern and responsive styling
+  - React (TypeScript)
+  - Vite for development and builds
+  - Tailwind CSS for responsive design
 - **Backend**:
-  - Express.js
-  - TypeScript for strongly-typed server-side code
+  - Express.js (TypeScript)
+  - Proxy for **TMDB API** interactions
 - **Deployment**:
-  - **Frontend**: Deployed on [Vercel](https://vercel.com)
-  - **Backend**: Deployed on [Render](https://render.com)
-- **API Integration**:
-  - **TMDB API** for fetching movie details and streaming provider data.
+  - Frontend: [Vercel](https://vercel.com)
+  - Backend: [Render](https://render.com)
+- **API**:
+  - [TMDB API](https://www.themoviedb.org/documentation/api) for movie and streaming data
 
 ---
 
-## Project Structure
+## **Project Structure**
+
 ```
-where-to-stream-app/
-├── client/                     # Frontend React app
-│   ├── public/                 # Static files
-│   ├── src/                    # Source code
-│   │   ├── components/         # React components (e.g., MovieCard, SearchBar, Footer)
-│   │   ├── hooks/              # Custom React hooks
-│   │   ├── services/           # API service functions
-│   │   ├── types/              # TypeScript interfaces for TMDB and app data
-│   │   ├── styles/             # Tailwind CSS configuration and global styles
-│   │   ├── App.tsx             # Main app component
-│   │   └── main.tsx            # Entry point for the app
-├── server/                     # Backend Express app
+where-to-stream/
+├── client/                   # Frontend
+│   ├── public/               # Static files
+│   ├── src/                  # Source code
+│   │   ├── components/       # React components (MovieCard, SearchBar, etc.)
+│   │   ├── hooks/            # Custom hooks (useFetchMovies)
+│   │   ├── services/         # API service functions
+│   │   ├── types/            # TypeScript interfaces for TMDB and app data
+│   │   ├── App.tsx           # Main app component
+│   │   └── main.tsx          # Entry point
+├── server/                   # Backend
 │   ├── src/
-│   │   ├── controllers/        # Handlers for API routes
-│   │   ├── services/           # Logic for interacting with the TMDB API
-│   │   ├── routes/             # API route definitions
-│   │   ├── middleware/         # Error handling and other middleware
-│   │   ├── index.ts            # Server entry point
-│   │   └── config.ts           # Configuration and environment setup
-├── README.md                   # Project documentation
-└── package.json                # Dependencies and scripts
+│   │   ├── controllers/      # API route handlers
+│   │   ├── services/         # TMDB API logic
+│   │   ├── routes/           # Express routes
+│   │   ├── middleware/       # Middleware (e.g., error handling)
+│   │   └── index.ts          # Server entry point
+├── .gitignore                # Ignored files
+├── README.md                 # Project documentation
+└── package.json              # Dependencies and scripts
 ```
 
 ---
 
-## How to Run Locally
+## **How to Run Locally**
 
-### Prerequisites
+### **Prerequisites**
 - Node.js installed
-- TMDB API key (Create an account at [TMDB](https://www.themoviedb.org/) to generate your API key)
+- TMDB API key
 
-### Steps
+### **Steps**
 1. Clone the repository:
    ```bash
-   git clone https://github.com/pamoralescs/Where-To-Stream.git
-   cd Where-To-Stream
+   git clone https://github.com/pamoralescs/where-to-stream.git
+   cd where-to-stream
    ```
 
 2. Install dependencies:
@@ -80,66 +86,71 @@ where-to-stream-app/
    ```
 
 3. Set up environment variables:
-   - Create a `.env` file in the `server/` directory and add:
+   - Create `.env` in the `server/` directory:
      ```
      TMDB_API_KEY=your_tmdb_api_key
      PORT=3000
      ```
-   - For the frontend, ensure the Vite `VITE_BACKEND_URL` points to the backend:
+   - For the frontend, ensure the backend URL is set in Vite’s `.env`:
      ```
      VITE_BACKEND_URL=http://localhost:3000
      ```
 
 4. Run the app:
-   - Start the backend:
+   - **Backend**:
      ```bash
      cd server
      npm run dev
      ```
-   - Start the frontend:
+   - **Frontend**:
      ```bash
      cd client
      npm run dev
      ```
 
-5. Open the app in your browser at:
+5. Open the app in your browser:
    ```
    http://localhost:5173
    ```
 
 ---
 
-## Deployed Application
-- **Frontend**: [Live on Vercel](https://wheretostream.vercel.app)
-- **Backend**: [Hosted on Render](https://where-to-stream.onrender.com)
+## **Deployment**
+
+### **Live Demo**
+- Frontend: [Live on Vercel](https://wheretostream.vercel.app)
+- Backend: [Hosted on Render](https://where-to-stream.onrender.com)
 
 ---
 
-## Design Decisions
-1. **Server Wake-Up Notification**: If the backend server is asleep (due to hosting constraints on Render), a notification informs users that the server is waking up.
-2. **"Top Results" Notification**: When displaying search results, the app informs users that only the top 10 results are shown, with guidance to refine searches for better specificity.
-3. **Fallback UI**: A clean "No results found" state is displayed for empty search results or invalid queries.
+## **Design Highlights**
+
+- **Certification Accuracy**: Ensures movie certifications are accurate by prioritizing US ratings when available.
+- **Runtime Conversion**: Converts runtimes into hours and minutes for readability.
+- **Server Wake-Up Notifications**: Informs users when the backend is waking up to minimize confusion.
 
 ---
 
-## Screenshots
-### Home Page
-Displays the search bar and movie results.
-
-![Home Page](https://your-image-link.com/home-page)
-
-### Search Results
-Responsive design showcasing movie details and streaming platforms.
-
-![Search Results](https://your-image-link.com/search-results)
+## **Future Enhancements**
+- Add user authentication for personalized movie lists.
+- Allow users to filter movies by streaming provider.
+- Add multi-language support for a global audience.
 
 ---
 
-## Credits
-- **TMDB API**: This project uses the [TMDB API](https://www.themoviedb.org/) but is not endorsed or certified by TMDB.
-- **Icons**: React icons used for styling and branding.
+## **Screenshots**
+
+### **Home Page**
+_Search for movies, view details, and streaming platforms._
+
+![Home Page](https://dummyimage.com/800x400/cccccc/000000&text=Home+Page)
 
 ---
 
-### **Final Notes**
-The `Where-To-Stream` app is designed to highlight my skills as a developer, showcasing clean design, modern frameworks, and thoughtful UX. Feel free to expand or modify the app to explore additional features!
+## **Credits**
+- **TMDB API**: [The Movie Database API](https://www.themoviedb.org/documentation/api)
+- **React Icons**: For branding and design elements.
+
+---
+
+Feel free to modify and enhance the app further to suit your needs. 🚀

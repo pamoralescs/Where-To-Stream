@@ -118,8 +118,7 @@ where-to-stream/
 ## **Deployment**
 
 ### **Live Demo**
-- Frontend: [Live on Vercel](https://wheretostream.vercel.app)
-- Backend: [Hosted on Render](https://where-to-stream.onrender.com)
+- [Live on Vercel](https://wheretostream.vercel.app)
 
 ---
 
